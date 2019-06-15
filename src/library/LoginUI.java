@@ -15,7 +15,7 @@ import java.sql.*;
  *
  * @author edgar
  */
-public class LoginUI extends JFrame implements ActionListener{
+public class LoginUI extends JFrame{
     // Swing Parameters
     JTextField username;
     JPasswordField password;
@@ -118,10 +118,5 @@ public class LoginUI extends JFrame implements ActionListener{
     
     public static void main(String [] args) {
         LoginUI loginUI = new LoginUI();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
