@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -55,8 +56,8 @@ public class LibraryDepartment {
         this.workingTime = workingTime;
     }
     
-    public void bookQueForFutureCheckout() {
-        
+    public void bookQueForFutureCheckout(Date date) {
+        // Customer gives date when he wants to book book
     }
     
     public void giveBook() {
@@ -68,10 +69,10 @@ public class LibraryDepartment {
     }
     
     public void addBook() {
-        
+        // Add book into customer list
     }
     
     public void removeBook() {
-        
+        // Remove book from the book list
     }
 }

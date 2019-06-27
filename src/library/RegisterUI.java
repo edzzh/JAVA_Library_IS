@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Random;
+
 import helpers.*;
 /**
  *
@@ -31,6 +33,7 @@ public class RegisterUI extends JFrame implements ActionListener{
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps = null;
+    Random r = new Random();
     
     public RegisterUI() {
         super("Register");
@@ -91,8 +94,8 @@ public class RegisterUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == register) {
             // Save Data In Database
-            String sql = "INSERT INTO USERS(NAME, SURNAME, USERNAME, PASSWORD) "
-                    + "VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO USERS(NAME, SURNAME, USERNAME, PASSWORD, USER_NUMBER) "
+                    + "VALUES (?, ?, ?, ?, ?)";
             try {
                 con = DriverManager.getConnection("jdbc:sqlite:library_users.db");
                 ps = con.prepareStatement(sql);
@@ -101,6 +104,7 @@ public class RegisterUI extends JFrame implements ActionListener{
                 ps.setString(2, surname.getText());
                 ps.setString(3, username.getText());
                 ps.setString(4, Utils.MD5(password.getText()));
+                ps.setInt(5, r.nextInt((1000 - 1) + 1) + 1);
                 
                 ps.executeUpdate();
             } catch (Exception ex) {

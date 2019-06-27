@@ -8,7 +8,6 @@ package library;
 import helpers.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.sql.*;
 
 /**
@@ -87,8 +86,7 @@ public class LoginUI extends JFrame{
                     if(rs.next()){
                         JOptionPane.showMessageDialog(null, "Username and Password Correct");
                         setVisible(false);
-                        LibraryUI libraryUI = new LibraryUI();
-                        libraryUI.setVisible(true);
+                        LibraryUI.createAndShowGUI(username.getText());
                     }
                 } catch (Exception ex) {
                     setVisible(true);
@@ -109,7 +107,7 @@ public class LoginUI extends JFrame{
                 RegisterUI registerUI = new RegisterUI();
                 
                 setVisible(false);  // sets Login visibility equal to false
-                registerUI.setVisible(true);    // sets regiter ui visiblity to true   
+                registerUI.setVisible(true);    // sets register UI visibility to true   
             }
         });
         
@@ -117,6 +115,6 @@ public class LoginUI extends JFrame{
     }
     
     public static void main(String [] args) {
-        LoginUI loginUI = new LoginUI();
+        new LoginUI();
     }
 }
